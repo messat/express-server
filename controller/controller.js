@@ -1,4 +1,4 @@
-const { selectOwnersById, selectAllOwners, selectAllPetsByOwnerId } = require("../models/models");
+const { selectOwnersById, selectAllOwners, selectAllPetsByOwnerId, selectAllPets } = require("../models/models");
 
 exports.getOwnersById = async (req, res) => {
   const { id } = req.params;
@@ -34,6 +34,21 @@ exports.getAllPetsByOwnerId = async (req, res)=>{
         }
 
     } catch (e){
+        console.log(e)
+    }
+}
+
+exports.getAllPets = async (req, res)=>{
+    const {temperament} = req.query
+    try {
+        const allPets = await selectAllPets(temperament)
+        if(allPets.length){
+            res.status(200).send({allPets})
+        } else {
+            res.status(404).send({message: "404 Route Not Found"})
+        }
+
+    } catch(e){
         console.log(e)
     }
 }
