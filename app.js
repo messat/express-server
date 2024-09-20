@@ -1,5 +1,5 @@
 const express = require('express')
-const { getOwnersById, getAllOwners } = require('./controller/controller')
+const { getOwnersById, getAllOwners, getAllPetsByOwnerId } = require('./controller/controller')
 const app = express()
 
 
@@ -10,6 +10,8 @@ app.get('/api', (req, res)=>{
 app.get('/api/owners/:id', getOwnersById)
 
 app.get('/api/owners', getAllOwners)
+
+app.get('/api/owners/:id/pets', getAllPetsByOwnerId)
 
 
 app.get("*", (req, res)=>{
