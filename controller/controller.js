@@ -1,4 +1,10 @@
-const { selectOwnersById, selectAllOwners, selectAllPetsByOwnerId, selectAllPets } = require("../models/models");
+const {
+  selectOwnersById,
+  selectAllOwners,
+  selectAllPetsByOwnerId,
+  selectAllPets,
+  selectPetById,
+} = require("../models/models");
 
 exports.getOwnersById = async (req, res) => {
   const { id } = req.params;
@@ -13,42 +19,52 @@ exports.getOwnersById = async (req, res) => {
 exports.getAllOwners = async (req, res) => {
   try {
     const allOwnersData = await selectAllOwners();
-    if (allOwnersData.length){
-        res.status(200).send({ Owners: allOwnersData });
+    if (allOwnersData.length) {
+      res.status(200).send({ Owners: allOwnersData });
     }
   } catch (e) {
     console.log(e);
-    res.status(404).send({error: e})
+    res.status(404).send({ error: e });
   }
 };
 
-exports.getAllPetsByOwnerId = async (req, res)=>{
-    const {id} = req.params
+exports.getAllPetsByOwnerId = async (req, res) => {
+  const { id } = req.params;
 
-    try {
-        const petsByOwnerId = await selectAllPetsByOwnerId(id)
-        if(petsByOwnerId.length){
-            res.status(200).send({"Owner By ID":petsByOwnerId})
-        } else {
-            res.status(404).send({message: "404 Not Found"})
-        }
-
-    } catch (e){
-        console.log(e)
+  try {
+    const petsByOwnerId = await selectAllPetsByOwnerId(id);
+    if (petsByOwnerId.length) {
+      res.status(200).send({ "Owner By ID": petsByOwnerId });
+    } else {
+      res.status(404).send({ message: "404 Not Found" });
     }
-}
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-exports.getAllPets = async (req, res)=>{
-    const {temperament} = req.query
-    try {
-        const allPets = await selectAllPets(temperament)
-        if(allPets.length){
-            res.status(200).send({allPets})
-        } else {
-            res.status(404).send({message: "404 Route Not Found"})
-        }
-
-    } catch(e){
-        console.log(e)
+exports.getAllPets = async (req, res) => {
+  const { temperament } = req.query;
+  try {
+    const allPets = await selectAllPets(temperament);
+    if (allPets.length) {
+      res.status(200).send({ allPets });
+    } else {
+      res.status(404).send({ message: "404 Route Not Found" });
     }
-}
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+exports.petById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const petId = await selectPetById(id);
+    res.status(200).send({ petId });
+  } catch (e) {
+    console.log(e);
+    res.status(404).send({ message: "404 Not Found" });
+  }
+};
