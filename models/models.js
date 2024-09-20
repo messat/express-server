@@ -3,7 +3,7 @@ const fs = require("fs/promises");
 exports.selectOwnersById = async (ownersId) => {
   try {
     const ownersProfile = await fs.readFile(
-      `./data/owners/o${ownersId}.json`,
+      `./data/owners/${ownersId}.json`,
       "utf-8"
     );
     const parsedOwnersData = JSON.parse(ownersProfile);
@@ -26,5 +26,26 @@ exports.selectAllOwners = async () => {
     return allOwners;
   } catch (e) {
     throw e;
+  }
+};
+
+exports.selectAllPetsByOwnerId = async (ownerId) => {
+  try {
+    const allPetsByOwner = [];
+
+    const petsDirectory = await fs.readdir("./data/pets", "utf-8");
+    for (const petsFile of petsDirectory) {
+      const petsProfile = JSON.parse(
+        await fs.readFile(`./data/pets/${petsFile}`, "utf-8")
+      );
+      allPetsByOwner.push(petsProfile);
+    }
+
+    const filterPetsById = allPetsByOwner.filter((pet) => {
+      return pet.owner === ownerId;
+    });
+    return filterPetsById;
+  } catch (e) {
+    throw e
   }
 };
