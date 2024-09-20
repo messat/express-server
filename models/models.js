@@ -61,12 +61,23 @@ exports.selectAllPets = async (temperament) => {
       );
       allPets.push(petsProfile);
     }
-    if(temperament){
-        return allPets.filter((pet)=>{
-            return pet.temperament === temperament
-        })
-    } 
+    if (temperament) {
+      return allPets.filter((pet) => {
+        return pet.temperament === temperament;
+      });
+    }
     return allPets;
+  } catch (e) {
+    throw e;
+  }
+};
+
+exports.selectPetById = async (petId) => {
+  try {
+    const petProfile = JSON.parse(
+      await fs.readFile(`./data/pets/${petId}.json`, "utf-8")
+    );
+    return petProfile;
   } catch (e) {
     throw e;
   }
