@@ -46,6 +46,28 @@ exports.selectAllPetsByOwnerId = async (ownerId) => {
     });
     return filterPetsById;
   } catch (e) {
-    throw e
+    throw e;
+  }
+};
+
+exports.selectAllPets = async (temperament) => {
+  try {
+    const allPets = [];
+
+    const petsDirectory = await fs.readdir("./data/pets", "utf-8");
+    for (const petsFile of petsDirectory) {
+      const petsProfile = JSON.parse(
+        await fs.readFile(`./data/pets/${petsFile}`, "utf-8")
+      );
+      allPets.push(petsProfile);
+    }
+    if(temperament){
+        return allPets.filter((pet)=>{
+            return pet.temperament === temperament
+        })
+    } 
+    return allPets;
+  } catch (e) {
+    throw e;
   }
 };
