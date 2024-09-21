@@ -1,7 +1,9 @@
 const express = require('express')
-const { getOwnersById, getAllOwners, getAllPetsByOwnerId, getAllPets, petById } = require('./controller/controller')
+const { getOwnersById, getAllOwners, getAllPetsByOwnerId, getAllPets, petById, patchOwnerById } = require('./controller/controller')
 const app = express()
 
+
+app.use(express.json())
 
 app.get('/api', (req, res)=>{
     res.send("Hello world from the Home page")
@@ -16,6 +18,8 @@ app.get('/api/owners/:id/pets', getAllPetsByOwnerId)
 app.get('/api/pets', getAllPets)
 
 app.get('/api/pets/:id', petById)
+
+app.patch('/api/owner/update', patchOwnerById)
 
 
 app.get("*", (req, res)=>{

@@ -82,3 +82,19 @@ exports.selectPetById = async (petId) => {
     throw e;
   }
 };
+
+exports.updateOwnerById = async (id, name, age)=>{
+    try {
+      if(id && name && age){
+        const ownerProfile = JSON.parse(await fs.readFile(`./data/owners/${id}.json`, 'utf-8'))
+        const newOwnerProfile = Object.assign(ownerProfile, {id: id, name: name, age: age})
+        const updateOwner = await fs.writeFile(`./data/owners/${id}.json`, JSON.stringify(newOwnerProfile, null, 2))
+        const readUpdatedOwner = JSON.parse(await fs.readFile(`./data/owners/${id}.json`, 'utf-8'))
+        return readUpdatedOwner
+      } else {
+        return []
+      }
+    } catch (e){
+      throw e
+    }
+}
