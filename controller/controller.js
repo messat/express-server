@@ -4,10 +4,11 @@ const {
   selectAllPetsByOwnerId,
   selectAllPets,
   selectPetById,
+  updateOwnerById,
 } = require("../models/models");
 
 exports.getOwnersById = async (req, res) => {
-  const { id } = req.params;
+  const {id} = req.params
   try {
     const ownersFileData = await selectOwnersById(id);
     res.status(200).send({ "Owner Profile": ownersFileData });
@@ -68,3 +69,18 @@ exports.petById = async (req, res) => {
     res.status(404).send({ message: "404 Not Found" });
   }
 };
+
+exports.patchOwnerById = async (req, res)=>{
+  const {id, name, age} =req.body
+  try {
+    const patchedOwner = await updateOwnerById(id, name, age)
+    if (!Array.isArray(patchedOwner)){
+      res.status(200).send({patchedOwner})
+    } else {
+      res.status(304).send({message: "Body does not follow schema"})
+    }
+  } catch (e){
+    console.log(e)
+    res.status(404).send({message: "404 Body not updated"})
+  }
+}
