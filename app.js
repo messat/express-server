@@ -1,9 +1,19 @@
 const express = require('express')
 const { getOwnersById, getAllOwners, getAllPetsByOwnerId, getAllPets, petById, patchOwnerById, postNewOwner, postNewPet, deletePet, deleteOwner } = require('./controller/controller')
 const app = express()
+const fs = require('fs/promises')
 
 
 app.use(express.json())
+
+app.use(async (req,res, next)=>{
+    const methodReq = req.method
+    const urlReq = req.originalUrl
+    let currentTime = new Date();
+    const loggedData = {method: methodReq, url: urlReq, currentTime: currentTime}
+    await fs.appendFile('./log.txt', JSON.stringify(loggedData, null, 2))
+    next()
+})
 
 app.get('/api', (req, res)=>{
     res.send("Hello world from the Home page")
