@@ -1,0 +1,9 @@
+{
+  "id": "p1726968553811",
+  "name": "Muhammad",
+  "avatarUrl": "http://localhost:4040/api/owners/o1/pets",
+  "favouriteFood": "Biryani",
+  "owner": "o1",
+  "age": 30,
+  "temperament": "happy"
+}

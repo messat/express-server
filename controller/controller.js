@@ -6,6 +6,7 @@ const {
   selectPetById,
   updateOwnerById,
   addnewOwner,
+  addNewPet,
 } = require("../models/models");
 
 exports.getOwnersById = async (req, res) => {
@@ -100,3 +101,20 @@ exports.postNewOwner = async (req, res) => {
     res.status(404).send({message: "404 Not found"})
   }
 };
+
+exports.postNewPet = async (req,res) => {
+  const {id} = req.params
+  const {name, avatarUrl, favouriteFood, age,temperament} = req.body
+  try {
+    const newPet = await addNewPet(id, name, avatarUrl, favouriteFood, age,temperament)
+    if(newPet.id){
+      res.status(201).send({newPet})
+    } else {
+      res.status(404).send({message: "404 Body does not follow schema"})
+    }
+    
+  } catch (e) {
+    console.log(e)
+    res.status(500).send({Error: e})
+  }
+}

@@ -127,3 +127,48 @@ exports.addnewOwner = async (name, age) => {
     throw e;
   }
 };
+
+exports.addNewPet = async (
+  OwnerId,
+  name,
+  avatarUrl,
+  favouriteFood,
+  age,
+  temperament
+) => {
+  try {
+    const allOwners = await fs.readdir("./data/owners");
+    const OwnersArr = [];
+    for (const owner of allOwners) {
+      OwnersArr.push(owner.split(".")[0]);
+    }
+    if (
+      OwnersArr.includes(OwnerId) &&
+      typeof name === "string" &&
+      typeof avatarUrl === "string" &&
+      typeof favouriteFood === "string" &&
+      typeof age === "number" &&
+      typeof temperament === "string"
+    ) {
+      const newId = "p" + Date.now().toString();
+      const newPetPost = {
+        id: newId,
+        name: name,
+        avatarUrl: avatarUrl,
+        favouriteFood: favouriteFood,
+        owner: OwnerId,
+        age: age,
+        temperament: temperament,
+      };
+      await fs.writeFile(
+        `./data/pets/${newId}.json`,
+        JSON.stringify(newPetPost, null, 2)
+      );
+      return newPetPost;
+    } else {
+      return [];
+    }
+  } catch (e) {
+    throw e;
+  }
+};
