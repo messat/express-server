@@ -8,6 +8,7 @@ const {
   addnewOwner,
   addNewPet,
   removePet,
+  removeOwner,
 } = require("../models/models");
 
 exports.getOwnersById = async (req, res) => {
@@ -129,4 +130,14 @@ exports.deletePet = async (req,res) => {
   } catch (e) {
     console.log(e)
   }
+}
+
+exports.deleteOwner = async (req,res) => {
+   const {id} = req.params
+   try {
+    await removeOwner(id)
+    res.status(204).send({message: "Deleted Owner and pet"})
+   } catch (e) {
+    console.log(e)
+   }
 }
