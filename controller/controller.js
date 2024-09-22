@@ -17,6 +17,7 @@ exports.getOwnersById = async (req, res) => {
     const ownersFileData = await selectOwnersById(id);
     res.status(200).send({ "Owner Profile": ownersFileData });
   } catch (e) {
+    console.log(e)
     res.status(404).send({ message: "404 Not Found" });
   }
 };
@@ -29,7 +30,7 @@ exports.getAllOwners = async (req, res) => {
     }
   } catch (e) {
     console.log(e);
-    res.status(404).send({ error: e });
+    res.status(404).send({ message: "404 Not found"});
   }
 };
 
@@ -45,6 +46,8 @@ exports.getAllPetsByOwnerId = async (req, res) => {
     }
   } catch (e) {
     console.log(e);
+    res.status(404).send({ message: "404 Not Found" });
+
   }
 };
 
@@ -59,6 +62,8 @@ exports.getAllPets = async (req, res) => {
     }
   } catch (e) {
     console.log(e);
+    res.status(404).send({ message: "404 Not Found" });
+
   }
 };
 
@@ -117,7 +122,7 @@ exports.postNewPet = async (req,res) => {
     
   } catch (e) {
     console.log(e)
-    res.status(500).send({Error: e})
+    res.status(404).send({ message: "404 Not Found" });
   }
 }
 
@@ -129,6 +134,7 @@ exports.deletePet = async (req,res) => {
     res.status(204).send({message: "Deleted"})
   } catch (e) {
     console.log(e)
+    res.status(404).send({ message: "404 Not Found" });
   }
 }
 
@@ -139,5 +145,6 @@ exports.deleteOwner = async (req,res) => {
     res.status(204).send({message: "Deleted Owner and pet"})
    } catch (e) {
     console.log(e)
+    res.status(404).send({ message: "404 Not Found" });
    }
 }
