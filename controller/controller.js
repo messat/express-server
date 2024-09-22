@@ -110,7 +110,7 @@ exports.postNewPet = async (req,res) => {
     if(newPet.id){
       res.status(201).send({newPet})
     } else {
-      res.status(404).send({message: "404 Body does not follow schema"})
+      res.status(404).send({message: "404 Body does not follow schema/owner not found"})
     }
     
   } catch (e) {
