@@ -3,7 +3,8 @@ const { getOwnersById, getAllOwners, getAllPetsByOwnerId, getAllPets, petById, p
 const app = express()
 const fs = require('fs/promises')
 
-
+app.set('views', './views')
+app.set('view engine', 'pug')
 app.use(express.json())
 
 app.use(async (req,res, next)=>{

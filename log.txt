@@ -34,4 +34,196 @@
   "method": "GET",
   "url": "/api/owners/o25tyt",
   "currentTime": "2024-09-22T20:14:42.022Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy",
+  "currentTime": "2024-09-22T20:31:27.753Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy",
+  "currentTime": "2024-09-22T20:33:35.610Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy",
+  "currentTime": "2024-09-22T20:34:23.533Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=name",
+  "currentTime": "2024-09-22T20:34:59.607Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=name",
+  "currentTime": "2024-09-22T20:35:31.600Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:36:05.962Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:37:17.256Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:37:34.606Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:38:17.209Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:39:38.590Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:40:34.687Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:40:46.098Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:41:24.275Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:42:10.092Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:42:30.983Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:42:49.770Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:42:55.142Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?temperament=happy&sort_by=age",
+  "currentTime": "2024-09-22T20:43:28.948Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=3",
+  "currentTime": "2024-09-22T20:49:31.266Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=3",
+  "currentTime": "2024-09-22T20:50:30.162Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=5",
+  "currentTime": "2024-09-22T20:50:40.010Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=5",
+  "currentTime": "2024-09-22T20:51:19.889Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=5",
+  "currentTime": "2024-09-22T20:52:22.107Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=5",
+  "currentTime": "2024-09-22T20:53:13.555Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=5",
+  "currentTime": "2024-09-22T20:53:57.717Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=5",
+  "currentTime": "2024-09-22T20:54:15.508Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=1",
+  "currentTime": "2024-09-22T20:54:52.956Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=4",
+  "currentTime": "2024-09-22T20:54:57.149Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=6",
+  "currentTime": "2024-09-22T20:55:00.203Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=6",
+  "currentTime": "2024-09-22T20:55:18.370Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=6",
+  "currentTime": "2024-09-22T20:55:36.613Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=6",
+  "currentTime": "2024-09-22T20:56:07.181Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=6",
+  "currentTime": "2024-09-22T20:56:20.630Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=6",
+  "currentTime": "2024-09-22T20:56:43.631Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?min_age=8",
+  "currentTime": "2024-09-22T20:56:53.602Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?max_age=8",
+  "currentTime": "2024-09-22T20:57:10.131Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=o5",
+  "currentTime": "2024-09-22T21:04:52.987Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=o5",
+  "currentTime": "2024-09-22T21:05:12.211Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=o5",
+  "currentTime": "2024-09-22T21:05:39.076Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=o5",
+  "currentTime": "2024-09-22T21:06:15.357Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=o5",
+  "currentTime": "2024-09-22T21:06:48.834Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=",
+  "currentTime": "2024-09-22T21:08:45.127Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=o5",
+  "currentTime": "2024-09-22T21:11:43.011Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=p5",
+  "currentTime": "2024-09-22T21:11:54.992Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=Marshmellows",
+  "currentTime": "2024-09-22T21:12:50.039Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=Marshmellows",
+  "currentTime": "2024-09-22T21:13:33.053Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=Trash%20Panda",
+  "currentTime": "2024-09-22T21:13:54.646Z"
+}{
+  "method": "GET",
+  "url": "/api/pets?search=p5",
+  "currentTime": "2024-09-22T21:15:41.754Z"
 }
