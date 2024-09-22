@@ -1,5 +1,5 @@
 const express = require('express')
-const { getOwnersById, getAllOwners, getAllPetsByOwnerId, getAllPets, petById, patchOwnerById, postNewOwner, postNewPet, deletePet } = require('./controller/controller')
+const { getOwnersById, getAllOwners, getAllPetsByOwnerId, getAllPets, petById, patchOwnerById, postNewOwner, postNewPet, deletePet, deleteOwner } = require('./controller/controller')
 const app = express()
 
 
@@ -26,6 +26,8 @@ app.post('/api/owner/post', postNewOwner)
 app.post('/api/owners/:id/pets', postNewPet)
 
 app.delete('/api/pets/:id', deletePet)
+
+app.delete('/api/owner/:id', deleteOwner)
 
 app.get("*", (req, res)=>{
     res.status(404).send({message: "404 Route Not found"})

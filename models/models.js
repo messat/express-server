@@ -173,11 +173,28 @@ exports.addNewPet = async (
   }
 };
 
-
-exports.removePet = async(id)=>{
+exports.removePet = async (id) => {
   try {
-    await fs.rm(`./data/pets/${id}.json`)
+    await fs.rm(`./data/pets/${id}.json`);
   } catch (e) {
-    throw e
+    throw e;
   }
-}
+};
+
+exports.removeOwner = async (ownerId) => {
+  try {
+    await fs.rm(`./data/owners/${ownerId}.json`);
+
+    const petsDir = await fs.readdir("./data/pets");
+
+    for (const pet of petsDir) {
+      const petData = JSON.parse(await fs.readFile(`./data/pets/${pet}`));
+
+      if (petData.owner === ownerId) {
+        await fs.rm(`./data/pets/${petData.id}.json`);
+      }
+    }
+  } catch (e) {
+    throw e;
+  }
+};
