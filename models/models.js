@@ -172,3 +172,12 @@ exports.addNewPet = async (
     throw e;
   }
 };
+
+
+exports.removePet = async(id)=>{
+  try {
+    await fs.rm(`./data/pets/${id}.json`)
+  } catch (e) {
+    throw e
+  }
+}
