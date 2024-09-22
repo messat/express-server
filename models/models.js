@@ -8,6 +8,7 @@ exports.selectOwnersById = async (ownersId) => {
     );
     const parsedOwnersData = JSON.parse(ownersProfile);
     return parsedOwnersData;
+
   } catch (e) {
     throw e;
   }
