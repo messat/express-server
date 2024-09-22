@@ -52,9 +52,10 @@ exports.getAllPetsByOwnerId = async (req, res) => {
 };
 
 exports.getAllPets = async (req, res) => {
-  const { temperament } = req.query;
+  const { temperament, sort_by, max_age, min_age, search } = req.query;
+
   try {
-    const allPets = await selectAllPets(temperament);
+    const allPets = await selectAllPets(temperament, sort_by, max_age, min_age, search );
     if (allPets.length) {
       res.status(200).send({ allPets });
     } else {

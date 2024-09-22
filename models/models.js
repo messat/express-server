@@ -51,10 +51,9 @@ exports.selectAllPetsByOwnerId = async (ownerId) => {
   }
 };
 
-exports.selectAllPets = async (temperament) => {
+exports.selectAllPets = async (temperament, sort_by = 'id', max_age, min_age, search ) => {
   try {
     const allPets = [];
-
     const petsDirectory = await fs.readdir("./data/pets", "utf-8");
     for (const petsFile of petsDirectory) {
       const petsProfile = JSON.parse(
@@ -62,12 +61,36 @@ exports.selectAllPets = async (temperament) => {
       );
       allPets.push(petsProfile);
     }
-    if (temperament) {
-      return allPets.filter((pet) => {
+    if (temperament && sort_by.length) {
+      const queryFilter = allPets.filter((pet) => {
         return pet.temperament === temperament;
-      });
+      }).sort((a,b)=> a[sort_by] - b[sort_by])
+      return queryFilter
+    } 
+    
+    else if(typeof max_age === 'string'){
+      const maxAgeFilter = allPets.filter((pet)=>{
+        return pet.age < parseInt(max_age)
+      })
+      return maxAgeFilter
+    } 
+    
+    else if(typeof min_age === 'string'){
+      const minAgeFilter = allPets.filter((pet)=>{
+        return pet.age > parseInt(min_age)
+      })
+      return minAgeFilter
     }
-    return allPets;
+    else if(typeof search === 'string'){
+      const searchFilter = allPets.filter((pet)=>{
+        if(pet.id === search || pet.name === search || pet.avatarUrl === search || pet.favouriteFood === search || pet.owner === search || pet.age === search)
+        return pet
+      })
+      return searchFilter
+    }
+    else {
+      return allPets;
+    }
   } catch (e) {
     throw e;
   }
