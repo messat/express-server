@@ -83,18 +83,47 @@ exports.selectPetById = async (petId) => {
   }
 };
 
-exports.updateOwnerById = async (id, name, age)=>{
-    try {
-      if(id && name && age){
-        const ownerProfile = JSON.parse(await fs.readFile(`./data/owners/${id}.json`, 'utf-8'))
-        const newOwnerProfile = Object.assign(ownerProfile, {id: id, name: name, age: age})
-        const updateOwner = await fs.writeFile(`./data/owners/${id}.json`, JSON.stringify(newOwnerProfile, null, 2))
-        const readUpdatedOwner = JSON.parse(await fs.readFile(`./data/owners/${id}.json`, 'utf-8'))
-        return readUpdatedOwner
-      } else {
-        return []
-      }
-    } catch (e){
-      throw e
+exports.updateOwnerById = async (id, name, age) => {
+  try {
+    if (id && name && age) {
+      const ownerProfile = JSON.parse(
+        await fs.readFile(`./data/owners/${id}.json`, "utf-8")
+      );
+      const newOwnerProfile = Object.assign(ownerProfile, {
+        id: id,
+        name: name,
+        age: age,
+      });
+      const updateOwner = await fs.writeFile(
+        `./data/owners/${id}.json`,
+        JSON.stringify(newOwnerProfile, null, 2)
+      );
+      const readUpdatedOwner = JSON.parse(
+        await fs.readFile(`./data/owners/${id}.json`, "utf-8")
+      );
+      return readUpdatedOwner;
+    } else {
+      return [];
     }
-}
+  } catch (e) {
+    throw e;
+  }
+};
+
+exports.addnewOwner = async (name, age) => {
+  try {
+    if (name && age) {
+      const id = "o" + Date.now().toString();
+      const newOwner = { id: id, name: name, age: age };
+      await fs.writeFile(
+        `./data/owners/${id}.json`,
+        JSON.stringify(newOwner, null, 2)
+      );
+      return newOwner;
+    } else {
+      return [];
+    }
+  } catch (e) {
+    throw e;
+  }
+};

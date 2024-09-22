@@ -5,10 +5,11 @@ const {
   selectAllPets,
   selectPetById,
   updateOwnerById,
+  addnewOwner,
 } = require("../models/models");
 
 exports.getOwnersById = async (req, res) => {
-  const {id} = req.params
+  const { id } = req.params;
   try {
     const ownersFileData = await selectOwnersById(id);
     res.status(200).send({ "Owner Profile": ownersFileData });
@@ -70,17 +71,32 @@ exports.petById = async (req, res) => {
   }
 };
 
-exports.patchOwnerById = async (req, res)=>{
-  const {id, name, age} =req.body
+exports.patchOwnerById = async (req, res) => {
+  const { id, name, age } = req.body;
   try {
-    const patchedOwner = await updateOwnerById(id, name, age)
-    if (!Array.isArray(patchedOwner)){
-      res.status(200).send({patchedOwner})
+    const patchedOwner = await updateOwnerById(id, name, age);
+    if (!Array.isArray(patchedOwner)) {
+      res.status(200).send({ patchedOwner });
     } else {
-      res.status(304).send({message: "Body does not follow schema"})
+      res.status(304).send({ message: "Body does not follow schema" });
     }
-  } catch (e){
-    console.log(e)
-    res.status(404).send({message: "404 Body not updated"})
+  } catch (e) {
+    console.log(e);
+    res.status(404).send({ message: "404 Body not updated" });
   }
-}
+};
+
+exports.postNewOwner = async (req, res) => {
+  const { name, age } = req.body;
+  try {
+    const newOwner = await addnewOwner(name, age);
+    if(typeof newOwner.name === 'string' && typeof newOwner.age === 'number'){
+      res.status(201).send({ newOwner });
+    } else {
+      res.status(404).send({message: "404 Body does not follow schema"})
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(404).send({message: "404 Not found"})
+  }
+};
